@@ -68,9 +68,10 @@ public class VirtualPetShelter2 {
 			}
 		}
 	}
-	// public void playOnePet(VirtualPet3 playOnePet) {
-	// playOnePet.play();
-	// }
+
+	public void playOnePet(VirtualPet3 playOnePet) {
+		playOnePet.play();
+	}
 
 	public void timeTick() {
 		for (VirtualPet3 pet : allPets()) {

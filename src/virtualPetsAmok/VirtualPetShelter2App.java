@@ -8,7 +8,7 @@ public class VirtualPetShelter2App {
 		Scanner input = new Scanner(System.in);
 		VirtualPetShelter2 coopersShelter = new VirtualPetShelter2();
 		RobotDog spanky = new RobotDog("Spanky", "Robotic Dog", 50, 50, 10);
-		RobotCat careBear = new RobotCat("CaraBear", "Robotic Cat", 50, 50, 10);
+		RobotCat careBear = new RobotCat("Cara", "Robotic Cat", 50, 50, 10);
 		OrganicDog cooper = new OrganicDog("Cooper", "Organic Dog", 40, 50, 20);
 
 		coopersShelter.addPet(spanky);
@@ -19,14 +19,13 @@ public class VirtualPetShelter2App {
 
 			System.out.println("Welcome to Cooper's Virtual Pet Shelter!!");
 			System.out.println();
-			// System.out.println("This is the status of our available pets:");
-			// System.out.println();
-			// System.out.println("Name \t|Hunger |Thirst |Boredom");
-			// System.out.println("-----\t|-------|-------|------");
+			System.out.println("This is the status of our available pets:");
+			System.out.println();
+			System.out.println("Name \t|Type \t\t|Health \t|Happiness ");
+			System.out.println("-----\t|-------\t|-------\t|-------");
 			for (VirtualPet3 pets : coopersShelter.allPets()) {
-				// System.out.println(pets.getName() + "\t|" + pets.getHunger() + "\t|" +
-				// pets.getThirst() + "\t|"
-				// + pets.getBoredom());
+				System.out.println(pets.getName() + "\t|" + pets.getClass().getSimpleName() + "\t|" + pets.getHealth()
+						+ "\t|" + pets.getHappiness());
 			}
 			System.out.println();
 			System.out.println("What would you like to do?");
@@ -37,7 +36,7 @@ public class VirtualPetShelter2App {
 			System.out.println("Press 4 to Walk all the dogs");
 			System.out.println("Press 5 to Clean all of the dog cages.");
 			System.out.println("Press 6 to Clean the literbox.");
-			// System.out.println("Press 7 to play with the pets.");
+			System.out.println("Press 7 to play with the pets.");
 			System.out.println("Press 8 to Adopt a Pet");
 			System.out.println("Press 9 to Admit a new Pet.");
 			System.out.println("Press 10 to Leave the Shelter.");
@@ -52,7 +51,7 @@ public class VirtualPetShelter2App {
 
 			case 1:
 				coopersShelter.feedPets();
-				System.out.println("Thank you for feeding the pets!");
+				System.out.println("Thank you for feeding the organic pets!");
 				System.out.println();
 				System.out.println();
 				coopersShelter.timeTick();
@@ -60,17 +59,49 @@ public class VirtualPetShelter2App {
 
 			case 2:
 				coopersShelter.hydratePets();
-				System.out.println("Thank you for giving the pets something to drink!");
+				System.out.println("Thank you for giving the organic pets something to drink!");
 				System.out.println();
 				System.out.println();
 				coopersShelter.timeTick();
 				break;
 
 			case 3:
+				coopersShelter.hydratePets();
+				System.out.println("Thank you for giving the organic pets something to drink!");
+				System.out.println();
+				System.out.println();
+				coopersShelter.timeTick();
+				break;
+
+			case 4:
+				coopersShelter.walkDog();
+				System.out.println("Thank you for walking the dogs! They are happier now.");
+				System.out.println();
+				System.out.println();
+				coopersShelter.timeTick();
+				break;
+
+			case 5:
+				coopersShelter.cleanCages();
+				System.out.println("Thank you for cleaning the cages! The cages smell so fresh and so clean clean.");
+				System.out.println();
+				System.out.println();
+				coopersShelter.timeTick();
+				break;
+
+			case 6:
+				coopersShelter.cleanLitterBox();
+				System.out.println("Thank you for cleaning the litter box! It smells wonderful in here.");
+				System.out.println();
+				System.out.println();
+				coopersShelter.timeTick();
+				break;
+
+			case 7:
 				System.out.println("Which pet would you like to play with?");
 				System.out.println("Enter their name to continue.");
 				for (VirtualPet3 currentPet : coopersShelter.allPets()) {
-					System.out.println(currentPet.petName + ", the " + currentPet.getDescription());
+					System.out.println(currentPet.petName);
 				}
 				String petToPlayWith = (input.next()).toUpperCase();
 				coopersShelter.getName(petToPlayWith).play();
@@ -80,10 +111,10 @@ public class VirtualPetShelter2App {
 				coopersShelter.timeTick();
 				break;
 
-			case 4:
+			case 8:
 				System.out.println("So who would you like to adopt?");
 				for (VirtualPet3 currentPet : coopersShelter.allPets()) {
-					System.out.println(currentPet.petName + ", " + currentPet.getDescription());
+					System.out.println(currentPet.petName);
 				}
 				System.out.println();
 				System.out.println("Please enter the pet you would like to adopt.");
@@ -95,22 +126,43 @@ public class VirtualPetShelter2App {
 				coopersShelter.timeTick();
 				break;
 
-			case 5:
+			case 9:
 				System.out.println("Looks like your little friend needs a new home.");
-				System.out.print("What is the pet's name? ");
-				String newPet = (input.next()).toUpperCase();
-				System.out.print("What type or breed is this pet? ");
-				String newDescription = input.nextLine();
-				VirtualPet3 addedPet = new VirtualPet3(newPet, newDescription);
-				coopersShelter.addPet(addedPet);
-				System.out.println();
-				System.out.println("Thank you, rest assured Cooper's Shelter will take GREAT care of " + newPet + ".");
-				System.out.println();
-				System.out.println();
-				coopersShelter.timeTick();
+				System.out.println("Enter A if you have an: Organic Dog");
+				System.out.println("Enter B if you have an: Organic Cat");
+				System.out.println("Enter C if you have a: Robotic Dog");
+				System.out.println("Enter D if you have an: Robotic Cat");
+				String petType = input.next();
+				switch (petType.toUpperCase()) {
+				case "A":
+					System.out.println("What the dogs name?");
+					String organicDog = input.next();
+					VirtualPet3 newOrganicDog = new OrganicDog(organicDog, petType, 10, 10, 10);
+					coopersShelter.addPet(newOrganicDog);
+					break;
+				case "B":
+					System.out.println("What will you name the new cat?");
+					String orgaicCat = input.next();
+					VirtualPet3 newOrganicCat = new OrganicCat(orgaicCat, petType, 10, 10, 10);
+					coopersShelter.addPet(newOrganicCat);
+					break;
+				case "C":
+					System.out.println("What will you name the new dog?");
+					String robotDog = input.next();
+					VirtualPet3 newRobotDog = new RobotDog(robotDog, petType, 10, 10, 10);
+					coopersShelter.addPet(newRobotDog);
+					break;
+				case "D":
+					System.out.println("What will you name the new cat?");
+					String robotCat = input.next();
+					VirtualPet3 newRobotCat = new RobotCat(robotCat, petType, 10, 10, 10);
+					coopersShelter.addPet(newRobotCat);
+					break;
+				}
+				System.out.println("Welcome to your new home!");
 				break;
 
-			case 6:
+			case 10:
 				System.out.println("Thank you so much for stopping by Cooper's Shelter! Take Care!");
 				System.exit(0);
 
@@ -122,4 +174,5 @@ public class VirtualPetShelter2App {
 		input.close();
 
 	}
+
 }

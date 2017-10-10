@@ -9,7 +9,7 @@ public class Cat extends VirtualPet3 {
 
 	@Override
 	public void tick() {
-//		happiness -= 10;
+		happiness -= 10;
 	}
 
 }

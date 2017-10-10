@@ -47,6 +47,7 @@ public class OrganicCat extends Cat implements Organic {
 		hunger += 0;
 		thirst -= 20;
 		waste += 5;
+		happiness += 20;
 	}
 
 	@Override
@@ -54,8 +55,9 @@ public class OrganicCat extends Cat implements Organic {
 
 		if (hunger >= 0 && thirst >= 0) {
 			health = ("Pet is healthy");
+		} else {
+			health = ("Pet died");
 		}
-		health = ("Pet died");
 	}
 
 	@Override

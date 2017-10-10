@@ -13,6 +13,7 @@ public class RobotDog extends Dog implements Robot {
 
 	@Override
 	public void tick() {
+		happiness -= 10;
 	}
 
 	@Override

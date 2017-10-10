@@ -6,8 +6,8 @@ public class OrganicDog extends Dog implements Organic {
 	int thirst = 100;
 	int waste = 50;
 
-	public OrganicDog(String petName, String discription, int waste, int hunger, int thirst) {
-		super(petName, discription);
+	public OrganicDog(String petName, String health, int waste, int hunger, int thirst) {
+		super(petName, health);
 		this.waste = waste;
 		this.hunger = hunger;
 		this.thirst = thirst;
@@ -30,13 +30,14 @@ public class OrganicDog extends Dog implements Organic {
 		hunger += 5;
 		thirst += 10;
 		waste -= 30;
+		happiness += 20;
 	}
 
-	// public void play() {
-	// super.play();
-	// hunger += 10;
-	// thirst += 15;
-	// }
+	public void play() {
+		super.play();
+		hunger += 10;
+		thirst += 15;
+	}
 
 	void cleanCage() {
 		waste -= 50;
@@ -47,6 +48,7 @@ public class OrganicDog extends Dog implements Organic {
 		hunger -= 20;
 		thirst += 5;
 		waste += 15;
+		happiness += 20;
 	}
 
 	@Override
@@ -54,6 +56,7 @@ public class OrganicDog extends Dog implements Organic {
 		hunger += 0;
 		thirst -= 20;
 		waste += 5;
+		happiness += 20;
 	}
 
 	@Override
@@ -61,8 +64,9 @@ public class OrganicDog extends Dog implements Organic {
 
 		if (hunger >= 0 && thirst >= 0 && waste <= 150) {
 			health = ("Pet is healthy");
+		} else {
+			health = ("Pet died");
 		}
-		health = ("Pet died");
 	}
 
 	@Override
